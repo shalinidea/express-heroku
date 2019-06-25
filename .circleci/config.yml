@@ -33,14 +33,20 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
-      - deploy:
-          requires:
-            - test
-            - build
+        - build:
+            requires:
+              - test
+        - test:
+            requires:
+              - build
+        - deploy:
+            requires:
+              - build
+              - test
+      
+      
+      
+        
 
 
 
